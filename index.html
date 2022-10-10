@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Authorization</title>
+		<link rel="shortcut icon" href="https://www.mekashron.com/favicon.png" type="image/png" />
+
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+			crossorigin="anonymous"
+		/>
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+
+		<script
+			src="https://code.jquery.com/jquery-3.6.0.min.js"
+			integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+			crossorigin="anonymous"
+		></script>
+
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+			crossorigin="anonymous"
+		></script>
+
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+		<script src="/api/authorizationService.js" type="module"></script>
+		<script src="/index.js" type="module"></script>
+
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div id="ContainerLogin" class="container">
+			<div class="row">
+				<div class="col-md-5 offset-md-3">
+					<div class="card my-5">
+						<form class="card-body p-lg-5">
+							<h2 class="text-center mb-3">Login</h2>
+							<div class="mb-3">
+								<label for="username" class="form-label">Username:</label>
+								<input
+									type="text"
+									class="input form-control"
+									id="Username"
+									placeholder="please enter your username"
+								/>
+							</div>
+							<div class="mb-3">
+								<label for="password" class="form-label">Password:</label>
+								<input
+									type="password"
+									class="input form-control"
+									id="Password"
+									placeholder="please enter your password"
+								/>
+							</div>
+							<a id="RegisterForm" href="#" class="link-primary">Registration form</a>
+							<div class="text-center">
+								<button id="BtnAuth" type="submit" class="btn btn-outline-dark mt-3 w-100">
+									Submit
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="ContainerRegister" class="container d-none">
+			<div class="row">
+				<div class="col-md-5 offset-md-3">
+					<div class="card my-5">
+						<form class="card-body p-lg-5">
+							<h2 class="text-center mb-3">Registration</h2>
+							<div class="mb-3">
+								<label for="email" class="form-label">E-mail:</label>
+								<input
+									type="text"
+									class="input form-control"
+									id="Email"
+									placeholder="please enter your e-mail"
+								/>
+							</div>
+							<div class="mb-3">
+								<label for="passwordRegister" class="form-label">Password:</label>
+								<input
+									type="password"
+									class="input form-control"
+									id="PasswordRegister"
+									placeholder="please enter your password"
+								/>
+							</div>
+							<div class="mb-3">
+								<label for="text" class="form-label">Firstname:</label>
+								<input
+									type="text"
+									class="input form-control"
+									id="Firstname"
+									placeholder="please enter your firstname"
+								/>
+								<div class="form-text">It will also be your username</div>
+							</div>
+							<div class="mb-3">
+								<label for="lastname" class="form-label">Lastname:</label>
+								<input
+									type="text"
+									class="input form-control"
+									id="Lastname"
+									placeholder="please enter your lastname"
+								/>
+							</div>
+							<div class="mb-3">
+								<label for="phone" class="form-label">Mobile:</label>
+								<input
+									type="text"
+									class="input form-control"
+									id="Phone"
+									placeholder="please enter your phone number"
+								/>
+							</div>
+							<div class="mb-3">
+								<label for="CountryId" class="form-label">CountryId:</label>
+								<input
+									type="number"
+									class="input form-control"
+									id="CountryId"
+									placeholder="please enter country Id"
+								/>
+							</div>
+							<div class="mb-3">
+								<label for="aId" class="form-label" volume="">aId:</label>
+								<input
+									type="number"
+									class="input form-control"
+									id="AId"
+									placeholder="please enter aId"
+								/>
+							</div>
+							<div class="mb-3">
+								<label for="singupIp" class="form-label">SingupIp:</label>
+								<input
+									type="text"
+									class="input form-control"
+									id="SingupIp"
+									placeholder="please enter singupId"
+								/>
+							</div>
+
+							<a id="LoginForm" href="#" class="link-primary">Login form</a>
+							<div class="text-center">
+								<button id="BtnRegister" type="submit" class="btn btn-outline-dark mt-3 w-100">
+									Register
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="ContainerLoginInfo" class="container d-none">
+			<div class="row justify-content-center">
+				<div class="col-auto">
+					<table class="table table-responsive table-bordered">
+						<thead>
+							<tr>
+								<th scope="col">Information</th>
+								<th scope="col">Value</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>EntityId</td>
+								<td id="ValEntityId"></td>
+							</tr>
+							<tr>
+								<td>FirstName</td>
+								<td id="ValFirstName"></td>
+							</tr>
+							<tr>
+								<td>LastName</td>
+								<td id="ValLastName"></td>
+							</tr>
+							<tr>
+								<td>Company</td>
+								<td id="ValCompany"></td>
+							</tr>
+							<tr>
+								<td>Address</td>
+								<td id="ValAddress"></td>
+							</tr>
+							<tr>
+								<td>City</td>
+								<td id="ValCity"></td>
+							</tr>
+							<tr>
+								<td>Country</td>
+								<td id="ValCountry"></td>
+							</tr>
+							<tr>
+								<td>Zip</td>
+								<td id="ValZip"></td>
+							</tr>
+							<tr>
+								<td>Phone</td>
+								<td id="ValPhone"></td>
+							</tr>
+							<tr>
+								<td>Mobile</td>
+								<td id="ValMobile"></td>
+							</tr>
+							<tr>
+								<td>Email</td>
+								<td id="ValEmail"></td>
+							</tr>
+							<tr>
+								<td>EmailConfirm</td>
+								<td id="ValEmailConfirm"></td>
+							</tr>
+							<tr>
+								<td>MobileConfirm</td>
+								<td id="ValMobileConfirm"></td>
+							</tr>
+							<tr>
+								<td>CountryID</td>
+								<td id="ValCountryID"></td>
+							</tr>
+							<tr>
+								<td>Status</td>
+								<td id="ValStatus"></td>
+							</tr>
+							<tr>
+								<td>Lid</td>
+								<td id="ValLid"></td>
+							</tr>
+							<tr>
+								<td>FtpHost</td>
+								<td id="ValFtpHost"></td>
+							</tr>
+							<tr>
+								<td>FtpPort</td>
+								<td id="ValFtpPort"></td>
+							</tr>
+							<tr>
+								<td>ResultCode</td>
+								<td id="ValResultCode"></td>
+							</tr>
+							<tr>
+								<td>ResultMessage</td>
+								<td id="ValResultMessage"></td>
+							</tr>
+						</tbody>
+
+						<div class="d-flex align-items-center justify-content-between mb-3">
+							<button id="BtnBackToAuth" type="btnBackToAuth" class="btn btn-outline-dark mt-3 w-25">
+								Back
+							</button>
+						</div>
+					</table>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
